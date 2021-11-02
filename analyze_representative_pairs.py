@@ -56,7 +56,7 @@ def get_true_mut_rate(filename1, filename2):
     return (100.0-true_ani)/100.0
     
 
-seed = 5
+seed = 1
 stats_filename = 'results'
 k = 21
 scale_factor = 0.01
