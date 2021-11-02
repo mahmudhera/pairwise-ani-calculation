@@ -55,7 +55,7 @@ def get_true_mut_rate(filename1, filename2):
     f = open('temp', 'r')
     true_ani = float(f.readlines()[-1].split('\t')[1])
     f.close()
-    return 100.0-true_ani
+    return (100.0-true_ani)/100
     
 
 seed = 2
@@ -88,12 +88,13 @@ shuffled_pairs = list(pairs)
 random.shuffle(shuffled_pairs)
 
 for pair in shuffled_pairs:
-    print(pair)
-    break
-
-        #print('Trying ' + filename1 + ' ' + 'filename2')
-        #mutation_rate = get_true_mut_rate(filename1, filename2)
-        #mut_rate_idx = 
+    print('Trying ' + filename1 + ' ' + filename2)
+    mutation_rate = get_true_mut_rate(filename1, filename2)
+    print(mutation_rate)
+    mut_rate_idx = int(mutation_rate*100.0)
+    counts[mut_rate_idx] += 1
+    print(counts)
+    print('\n')
         #cmd = "python test_code.py " + filename1 + " " + filename2 + " -k " + str(k) + " -s " + str(scale_factor) + " --seed " + str(seed) + " -c 0.95 -N " + str(num_runs) + " -p " + str(mutation_rate) + " --fout " + stats_filename
         #args = cmd.split(' ')
         #subprocess.call(args)
