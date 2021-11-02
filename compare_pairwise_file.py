@@ -92,7 +92,7 @@ for (filename1, filename2) in shuffled_pairs:
     print('Trying ' + filename1 + ' ' + filename2)
     mutation_rate = get_true_mut_rate(filename1, filename2)
     print(mutation_rate)
-    mut_rate_idx = int(mutation_rate*20.0)
+    mut_rate_idx = min(int(mutation_rate*20.0), 19)
     if counts[mut_rate_idx] < 3:
         counts[mut_rate_idx] += 1
         selected_pairs.add( (filename1, filename2) )
