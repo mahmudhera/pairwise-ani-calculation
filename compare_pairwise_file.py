@@ -68,14 +68,14 @@ f = open(stats_filename, 'w')
 f.close()
 
 counts = [0]*10
-pairs = []
+pairs = set()
 
 for filename1 in glob.glob('data/*.fna'):
     for filename2 in glob.glob('data/*.fna'):
         if filename1 == filename2:
             continue
         if (filename2, filename1) not in pairs:
-            pairs.append( (filename1, filename2) )
+            pairs.add( (filename1, filename2) )
 
 print(len(pairs))
 
@@ -84,7 +84,7 @@ for pair in pairs:
     break
 
 random.seed(seed)
-random.shuffle(pairs)
+pairs = set( random.shuffle(list(pairs)) )
 
 for pair in pairs:
     print(pair)
