@@ -58,7 +58,7 @@ def get_true_mut_rate(filename1, filename2):
     return (100.0-true_ani)/100.0
     
 
-seed = 2
+seed = 5
 stats_filename = 'results'
 k = 21
 scale_factor = 0.01
@@ -68,6 +68,7 @@ f = open(stats_filename, 'w')
 f.close()
 
 counts = [0]*20
+counts[-1] = 3
 pairs = set()
 
 for filename1 in glob.glob('data/*.fna'):
@@ -99,7 +100,7 @@ for (filename1, filename2) in shuffled_pairs:
     print(counts)
     if(sum(counts) > 28):
         break
-    print('\n')
+    print(selected_pairs)
         #cmd = "python test_code.py " + filename1 + " " + filename2 + " -k " + str(k) + " -s " + str(scale_factor) + " --seed " + str(seed) + " -c 0.95 -N " + str(num_runs) + " -p " + str(mutation_rate) + " --fout " + stats_filename
         #args = cmd.split(' ')
         #subprocess.call(args)
