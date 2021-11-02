@@ -73,7 +73,8 @@ for filename1 in glob.glob('data/*.fna'):
     for filename2 in glob.glob('data/*.fna'):
         if filename1 == filename2:
             continue
-        pairs.add( (filename1, filename2) )
+        if (filename2, filename1) not in pairs:
+            pairs.add( (filename1, filename2) )
 
 print(len(pairs))
 
