@@ -91,7 +91,7 @@ for (filename1, filename2) in shuffled_pairs:
     print('Trying ' + filename1 + ' ' + filename2)
     mutation_rate = get_true_mut_rate(filename1, filename2)
     print(mutation_rate)
-    mut_rate_idx = int(mutation_rate*100.0)
+    mut_rate_idx = int(mutation_rate*10.0)
     counts[mut_rate_idx] += 1
     print(counts)
     print('\n')
