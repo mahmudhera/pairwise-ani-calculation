@@ -87,7 +87,7 @@ random.seed(seed)
 shuffled_pairs = list(pairs)
 random.shuffle(shuffled_pairs)
 
-for pair in shuffled_pairs:
+for (filename1, filename2) in shuffled_pairs:
     print('Trying ' + filename1 + ' ' + filename2)
     mutation_rate = get_true_mut_rate(filename1, filename2)
     print(mutation_rate)
