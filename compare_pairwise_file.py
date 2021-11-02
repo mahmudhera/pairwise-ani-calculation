@@ -67,12 +67,19 @@ f = open(stats_filename, 'w')
 f.close()
 
 counts = [0]*10
+pairs = set()
 
 for filename1 in glob.glob('data/*.fna'):
     for filename2 in glob.glob('data/*.fna'):
         if filename1 == filename2:
             continue
-        mutation_rate = get_true_mut_rate(filename1, filename2)
+        pairs.add( (filename1, filename2) )
+
+print(len(pairs))
+
+        #print('Trying ' + filename1 + ' ' + 'filename2')
+        #mutation_rate = get_true_mut_rate(filename1, filename2)
+        #mut_rate_idx = 
         #cmd = "python test_code.py " + filename1 + " " + filename2 + " -k " + str(k) + " -s " + str(scale_factor) + " --seed " + str(seed) + " -c 0.95 -N " + str(num_runs) + " -p " + str(mutation_rate) + " --fout " + stats_filename
         #args = cmd.split(' ')
         #subprocess.call(args)
