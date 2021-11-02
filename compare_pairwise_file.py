@@ -84,7 +84,7 @@ for pair in pairs:
     break
 
 random.seed(seed)
-pairs = set( random.shuffle(list(pairs)) )
+shuffled_pairs = random.shuffle(list(pairs))
 
 for pair in pairs:
     print(pair)
