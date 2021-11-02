@@ -3,6 +3,7 @@ import glob
 import mmh3
 import subprocess
 import string
+import random
 
 __complementTranslation = {"A": "T", "C": "G", "G": "C", "T": "A", "N": "N", "R": "N", 'K': 'N'}
 for char in string.ascii_uppercase:
@@ -77,6 +78,17 @@ for filename1 in glob.glob('data/*.fna'):
             pairs.add( (filename1, filename2) )
 
 print(len(pairs))
+
+for pair in pairs:
+    print(pair)
+    break
+
+random.seed(seed)
+random.shuffle(pairs)
+
+for pair in pairs:
+    print(pair)
+    break
 
         #print('Trying ' + filename1 + ' ' + 'filename2')
         #mutation_rate = get_true_mut_rate(filename1, filename2)
