@@ -67,7 +67,7 @@ num_runs = 20
 f = open(stats_filename, 'w')
 f.close()
 
-counts = [0]*10
+counts = [0]*20
 pairs = set()
 
 for filename1 in glob.glob('data/*.fna'):
@@ -87,13 +87,18 @@ random.seed(seed)
 shuffled_pairs = list(pairs)
 random.shuffle(shuffled_pairs)
 
+selected_pairs = set()
 for (filename1, filename2) in shuffled_pairs:
     print('Trying ' + filename1 + ' ' + filename2)
     mutation_rate = get_true_mut_rate(filename1, filename2)
     print(mutation_rate)
-    mut_rate_idx = int(mutation_rate*10.0)
-    counts[mut_rate_idx] += 1
+    mut_rate_idx = int(mutation_rate*20.0)
+    if counts[mut_rate_idx] < 3:
+        counts[mut_rate_idx] += 1
+        selected_pairs.add( (filename1, filename2) )
     print(counts)
+    if(sum(counts) > 28):
+        break
     print('\n')
         #cmd = "python test_code.py " + filename1 + " " + filename2 + " -k " + str(k) + " -s " + str(scale_factor) + " --seed " + str(seed) + " -c 0.95 -N " + str(num_runs) + " -p " + str(mutation_rate) + " --fout " + stats_filename
         #args = cmd.split(' ')
